@@ -22,6 +22,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="air_polution.py" />
+    <Compile Include="lib\air.py" />
+    <Compile Include="lib\compress.py" />
+    <Compile Include="lib\db.py" />
+    <Compile Include="lib\file.py" />
+    <Compile Include="lib\ML.py" />
+    <Compile Include="lib\shell.py" />
+    <Compile Include="lib\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="data\" />
+    <Folder Include="lib\" />
+    <Folder Include="result\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\polution-data.zip.partaa" />
+    <Content Include="data\polution-data.zip.partab" />
+    <Content Include="data\polution-data.zip.partac" />
+    <Content Include="data\polution-data.zip.partad" />
+    <Content Include="data\polution-data.zip.partae" />
+    <Content Include="data\polution-data.zip.partaf" />
+    <Content Include="data\polution-data.zip.partag" />
+    <Content Include="data\polution-data.zip.partah" />
+    <Content Include="data\polution-data.zip.partai" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
