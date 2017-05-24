@@ -22,6 +22,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="air_polution.py" />
+    <Compile Include="gui\model\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="gui\view\window.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="gui\view\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="import-mongo.py" />
     <Compile Include="lib\air.py" />
     <Compile Include="lib\compress.py" />
@@ -35,7 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
+    <Folder Include="gui\model\" />
+    <Folder Include="gui\view\" />
     <Folder Include="lib\" />
+    <Folder Include="gui\" />
     <Folder Include="result\" />
   </ItemGroup>
   <ItemGroup>
