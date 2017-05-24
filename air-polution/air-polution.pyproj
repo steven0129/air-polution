@@ -21,16 +21,19 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="lib\gui\model\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\gui\view\window.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\gui\view\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\gui\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="main.py" />
-    <Compile Include="gui\model\__init__.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="gui\view\window.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="gui\view\__init__.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="import-mongo.py" />
     <Compile Include="lib\air.py" />
     <Compile Include="lib\compress.py" />
@@ -44,10 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="data\" />
-    <Folder Include="gui\model\" />
-    <Folder Include="gui\view\" />
     <Folder Include="lib\" />
-    <Folder Include="gui\" />
+    <Folder Include="lib\gui\" />
+    <Folder Include="lib\gui\model\" />
+    <Folder Include="lib\gui\view\" />
     <Folder Include="result\" />
   </ItemGroup>
   <ItemGroup>
