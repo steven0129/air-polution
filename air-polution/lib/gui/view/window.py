@@ -24,7 +24,6 @@ class _Widget:
 		elif kwargs['signal'] == method[1]:
 			self._Button(kwargs['text'], kwargs['x'], kwargs['y'])
 
-
 	def _Label(self, text, x, y):
 		label = tk.Label(self.win, text=text)
 		label.place(x=x, y=y)
