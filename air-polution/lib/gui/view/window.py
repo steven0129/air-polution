@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 class gen:
 	def __init__(self, **kwargs):
@@ -13,6 +15,10 @@ class gen:
 	def addWidget(self, signal, name, text='', x=10, y=10):
 		widget = _Widget(signal=signal, win=self.win, text=text, x=x, y=y)
 		self.widget[name] = widget.gen()
+
+	def addCanvas(self, name, data):
+		graph = _Graphics()
+		self.widget[name] = graph.canvas(master=self.win, data=data)
 
 	def addEventListener(self, key, signal, callback):
 		self.widget[key].bind(signal, callback)
@@ -53,3 +59,14 @@ class _Widget:
 		combobox.place(x=x, y=y)
 		return combobox
 
+class _Graphics:
+	def __init__(self, **kwargs):
+		self.fig = Figure()
+		
+	def canvas(self, master, data):
+		self.subplot = self.fig.add_subplot(111)
+		self.subplot.plot(data)
+		canvas = FigureCanvasTkAgg(self.fig, master=master)
+		canvas.get_tk_widget().pack(side=tk.BOTTOM, fill='x', pady=40)
+
+		return canvas
