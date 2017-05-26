@@ -50,7 +50,6 @@ class info:
 
 class filter:
     def dayPolution(self, mapper):
-        print('processing: ' + str(mapper['日期']))
         temp = []
         for i in range(0, 25):
             try:

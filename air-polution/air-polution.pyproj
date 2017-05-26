@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="lib\gui\model\show.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="lib\gui\model\__init__.py">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="lib\gui\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="lib\math.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="main.py" />
