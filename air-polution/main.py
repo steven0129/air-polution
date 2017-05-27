@@ -1,6 +1,4 @@
 import tkinter as tk
-from tkinter import messagebox
-from matplotlib.figure import Figure
 import lib.gui.view.window as Window
 import lib.gui.model.mongo as Mongo
 import lib.math as Math
@@ -30,7 +28,7 @@ win.widget['comboMonth']['value'] = interval.get(low=1, high=12)
 win.widget['comboDay']['value'] = interval.get(low=1, high=31)
 
 def handler(e):
-	timeseries = air.timeseries(station='二林', date='2016/01/01', item='pm2.5')
+	timeseries = air.timeseries(station='二林', date='2016/01/01', item='PM2.5')
 	win.draw(data=timeseries)
 
 win.addEventListener('buttonSelect', '<Button-1>', handler)
