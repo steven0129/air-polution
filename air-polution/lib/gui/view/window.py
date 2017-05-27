@@ -7,6 +7,7 @@ class gen:
 	def __init__(self, **kwargs):
 		self.win = tk.Tk()
 		self.widget = {}
+		self.graph = _Graphics()
 		return super().__init__(**kwargs)
 
 	def setTitle(self, title):
@@ -16,9 +17,10 @@ class gen:
 		widget = _Widget(signal=signal, win=self.win, text=text, x=x, y=y)
 		self.widget[name] = widget.gen()
 
-	def addCanvas(self, name, data):
-		graph = _Graphics()
-		self.widget[name] = graph.canvas(master=self.win, data=data)
+	def draw(self, data):
+		self.graph.clear()
+		self.graph.draw(data)
+		self.graph.getCanvas(master=self.win, pady=50)
 
 	def addEventListener(self, key, signal, callback):
 		self.widget[key].bind(signal, callback)
@@ -63,10 +65,14 @@ class _Graphics:
 	def __init__(self, **kwargs):
 		self.fig = Figure()
 		
-	def canvas(self, master, data):
+	def draw(self, data):
 		self.subplot = self.fig.add_subplot(111)
 		self.subplot.plot(data)
-		canvas = FigureCanvasTkAgg(self.fig, master=master)
-		canvas.get_tk_widget().pack(side=tk.BOTTOM, fill='x', pady=40)
 
+	def getCanvas(self, master, padx=0, pady=0):
+		canvas = FigureCanvasTkAgg(self.fig, master=master)
+		canvas.get_tk_widget().pack(side=tk.BOTTOM, fill='x', padx=padx, pady=pady)
 		return canvas
+
+	def clear(self):
+		self.fig.clear()

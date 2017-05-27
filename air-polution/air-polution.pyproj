@@ -21,7 +21,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="lib\gui\model\show.py">
+    <Compile Include="lib\gui\model\mongo.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="lib\gui\model\__init__.py">

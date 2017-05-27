@@ -35,13 +35,11 @@ class mongo:
 
     def mapReduce(self, outputCollection, mapper, reducer):
         db = self.conn[self.dbName]
-        db[self.collectionName].map_reduce(
-            Code(mapper), Code(reducer), outputCollection)
+        db[self.collectionName].map_reduce(Code(mapper), Code(reducer), outputCollection)
 
     def aggregate(self, pipeline):
         db = self.conn[self.dbName]
-        result = db[self.collectionName].aggregate(
-            pipeline, allowDiskUse=True)
+        result = db[self.collectionName].aggregate(pipeline, allowDiskUse=True)
         return result
 
     def dropCollection(self, collectionName):
@@ -51,6 +49,10 @@ class mongo:
     def find(self, query):
         db = self.conn[self.dbName]
         return db[self.collectionName].find(query)
+
+    def findOne(self, query):
+        db = self.conn[self.dbName]
+        return db[self.collectionName].find_one(query)
 
     def distinct(self, field):
         db = self.conn[self.dbName]
