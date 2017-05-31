@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import threading
 import lib.gui.view.window as Window
 import lib.gui.model.mongo as Mongo
@@ -40,9 +41,13 @@ def handler():
     day = str(int(win.widget['comboDay'].get())).zfill(2)
     station = win.widget['comboStation'].get()
 
-    timeseries = MongoAir.timeseries(
-        station=station, date=year + '/' + month + '/' + day, item='PM2.5')
-    win.draw(data=timeseries)
+    try:
+        timeseries = MongoAir.timeseries(
+            station=station, date=year + '/' + month + '/' + day, item='PM2.5')
+        win.draw(data=timeseries)
+    except:
+        messagebox.showinfo('Warning', '無資料回傳')
+
     win.widget['buttonSelect']['text'] = '查詢'
     win.widget['buttonSelect']['state'] = 'normal'
 
