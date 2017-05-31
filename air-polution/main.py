@@ -1,11 +1,14 @@
 import tkinter as tk
+import threading
 import lib.gui.view.window as Window
 import lib.gui.model.mongo as Mongo
 import lib.math as Math
+import lib.air as Air
 
 win = Window.gen()
 interval = Math.interval()
-air = Mongo.air()
+MongoAir = Mongo.air()
+info = Air.info()
 
 win.setTitle('PM2.5趨勢監測器')
 win.addWidget(signal='combobox', name='comboYear', x=10, y=10)
@@ -26,16 +29,24 @@ win.widget['comboStation'].configure(width=8)
 win.widget['comboYear']['value'] = interval.get(low=88, high=105)
 win.widget['comboMonth']['value'] = interval.get(low=1, high=12)
 win.widget['comboDay']['value'] = interval.get(low=1, high=31)
+win.widget['comboStation']['value'] = info.getStation()
 
 
-def handler(e):
+def handler():
+    win.widget['buttonSelect']['text'] = '處理中...'
+    win.widget['buttonSelect']['state'] = 'disabled'
     year = str(1911 + int(win.widget['comboYear'].get()))
     month = str(int(win.widget['comboMonth'].get())).zfill(2)
     day = str(int(win.widget['comboDay'].get())).zfill(2)
-    timeseries = air.timeseries(
-        station='二林', date=year + '/' + month + '/' + day, item='PM2.5')
+    station = win.widget['comboStation'].get()
+
+    timeseries = MongoAir.timeseries(
+        station=station, date=year + '/' + month + '/' + day, item='PM2.5')
     win.draw(data=timeseries)
+    win.widget['buttonSelect']['text'] = '查詢'
+    win.widget['buttonSelect']['state'] = 'normal'
 
 
-win.addEventListener('buttonSelect', '<Button-1>', handler)
+win.addEventListener('buttonSelect', '<Button-1>',
+                     lambda e: threading.Thread(target=handler).start())
 win.run()
