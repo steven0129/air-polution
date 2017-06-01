@@ -3,6 +3,7 @@
 ## Quick Start
 
 ```bash
+$ cd air-polution
 $ python import-mongo.py # to import data into your mongo db
 $ python main.py
 ```
