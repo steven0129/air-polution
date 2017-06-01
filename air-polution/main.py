@@ -37,8 +37,8 @@ def handler():
     win.widget['buttonSelect']['text'] = '處理中...'
     win.widget['buttonSelect']['state'] = 'disabled'
     year = str(1911 + int(win.widget['comboYear'].get()))
-    month = str(int(win.widget['comboMonth'].get())).zfill(2)
-    day = str(int(win.widget['comboDay'].get())).zfill(2)
+    month = win.widget['comboMonth'].get().zfill(2)
+    day = win.widget['comboDay'].get().zfill(2)
     station = win.widget['comboStation'].get()
 
     try:
